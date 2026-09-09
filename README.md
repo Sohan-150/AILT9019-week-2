@@ -41,8 +41,19 @@ the skill does when an AI coding tool actually follows `SKILL.md` itself.
 
 ```bash
 cd mini-project
-python assistant.py
+python assistant.py       # or: python3 assistant.py
 ```
+
+Or run the packaged launcher instead of typing the python command — same program, easier
+to hand to someone else:
+
+- **Windows:** double-click `mini-project/run.bat` (or `run.bat` from cmd)
+- **macOS/Linux:** `./mini-project/run.sh`
+
+Both just find a Python 3 on `PATH` and start `assistant.py`; `assistant.py` itself is
+also directly executable on macOS/Linux (`./assistant.py`, shebang included). If option 3
+fails with an import error, `pip install -r mini-project/requirements.txt` (just `pypdf`,
+the skill's own dependency).
 
 Pick option 3 and press Enter with no path to summarise the bundled `sample.pdf` (a fake
 hall recycling notice — regenerate it any time with `python make_sample_pdf.py`).
@@ -51,7 +62,7 @@ hall recycling notice — regenerate it any time with `python make_sample_pdf.py
 
 ```bash
 # Mini project - interactive, uses the skill + MCP server together
-cd mini-project && python assistant.py
+cd mini-project && ./run.sh      # Windows: run.bat
 
 # MCP server on its own - real handshake, lists tools, calls each one
 python part-c-mcp/test_client.py
