@@ -8,9 +8,7 @@ ailt9019-week2/
 ├── part-a-context/     context engineering: same task, two instructions
 ├── part-b-skill/       the pdf-summarizer skill + proof it was used
 ├── part-c-mcp/         a tiny stdio MCP server (today / current_time / days_until)
-├── part-d-pi/          Pi Agent install + .pi/skills/ port of the same skill
-├── part-e-github/      git setup + push/clone runbook
-├── prototype/          Bin-finder — one page that answers one question + its tests
+├── mini-project/       Course Buddy — small interactive CLI using the skill + MCP together
 └── proposal/           2-3 direction shortlist + draft proposal (due Fri 25 Sep)
 ```
 
@@ -21,44 +19,45 @@ ailt9019-week2/
 | A · Context | You can predict how an instruction change changes the answer | **done** — `part-a-context/notes.md` |
 | B · Skills | The tool reproduces your SKILL.md format unprompted | **done** — `part-b-skill/test-output.md` |
 | C · MCP | You can point at output that came from a tool, not the model | **done** — `part-c-mcp/tool-output.txt` |
-| D · Pi Agent | Pi runs locally and follows your skill | **partly** — installed (v0.85.1) + skill copied to `.pi/skills/`; needs an API key for the session |
-| E · GitHub | A fresh clone contains everything you built | **pending** — needs GitHub auth |
+| E · GitHub | A fresh clone contains everything you built | **done** — this repo; verified by cloning into a second folder |
 
-## Two things need you (about 7 minutes total)
+Part D (Pi Agent) isn't tracked in this repo — `mini-project/` covers the same "skill +
+tool, running locally" idea without needing a model provider key.
 
-Both are interactive and use *your* credentials, so I stopped rather than guess.
+## mini-project — Course Buddy
 
-**1 · GitHub (Part E).** `gh` v2.100.0 is installed:
+A small interactive CLI that wires Part B and Part C together instead of leaving them as
+separate demos:
+
+- calls the real MCP server (`part-c-mcp/server.py`) over stdio JSON-RPC for today's date
+  and "days until a deadline"
+- runs the `pdf-summarizer` skill's own extractor
+  (`part-b-skill/my-skill/scripts/extract_pdf.py`) on a PDF and writes the result in the
+  skill's exact five-part brief format
+
+No LLM, no API key — this is a deterministic, extractive pass (first sentence per page),
+and the output says so up front ("Read at: sampled"). It's a mechanical stand-in for what
+the skill does when an AI coding tool actually follows `SKILL.md` itself.
+
 ```bash
-GH="C:/Users/sohan/.workbuddy-ai/binaries/gh/bin/gh.exe"
-cd "C:/Users/sohan/WorkBuddy AI/2026-09-09-21-42-04/ailt9019-week2"
-"$GH" auth login
-"$GH" repo create ailt9019-week2 --private --source=. --remote=origin --push
+cd mini-project
+python assistant.py
 ```
-Then clone into a second folder to prove a fresh clone has everything.
 
-**2 · Pi Agent provider (Part D).** Every provider reports `not_ready`. Set one key:
-```bash
-export GEMINI_API_KEY=...      # or ANTHROPIC_API_KEY / OPENAI_API_KEY
-cd part-d-pi/practice && pi --approve
-```
-Then `/skill:pdf-summarizer` to run the Part B skill inside Pi.
+Pick option 3 and press Enter with no path to summarise the bundled `sample.pdf` (a fake
+hall recycling notice — regenerate it any time with `python make_sample_pdf.py`).
 
 ## Quick start
 
 ```bash
-# Prototype — just open it, no server needed
-start prototype/index.html          # Windows
-open prototype/index.html           # macOS
+# Mini project - interactive, uses the skill + MCP server together
+cd mini-project && python assistant.py
 
-# MCP server — real handshake, lists tools, calls each one
+# MCP server on its own - real handshake, lists tools, calls each one
 python part-c-mcp/test_client.py
 
-# PDF summarizer skill
+# PDF summarizer skill on its own
 python part-b-skill/my-skill/scripts/extract_pdf.py <file.pdf> --out out.txt
-
-# Prototype evaluation — 42 checks, exits non-zero on failure
-node prototype/evaluate.js
 ```
 
 ## What each part concluded
@@ -71,14 +70,15 @@ node prototype/evaluate.js
   you skipped, refuse to fill gaps.
 - **C** — `today` returned `2026-09-09 (Wednesday), ISO year 2026 week 37`, read from this
   machine's clock. The model supplied only the words around it.
-- **D** — The same `SKILL.md` worked in Pi with zero edits, which is the actual lesson:
-  a skill is a file, not a feature of one tool.
-- **E** — repo committed locally; push + fresh-clone verification pending GitHub login.
+- **E** — pushed to GitHub; a second, independent clone confirmed every file is present,
+  including `mini-project/assistant.py`.
 
 ## Notes
 
-- The prototype's rule data is **seed data** — self-curated placeholder, labelled as such
-  in the UI. It must be replaced with rules transcribed from the published campus
-  recycling guide before Week 4.
+- `mini-project/` deliberately skips the LLM step so it runs with zero setup — the point
+  is proving the skill and the MCP server are real, callable pieces, not asking a model to
+  role-play them.
 - The MCP server is stdlib-only Python (no pip install) so it cannot break on a
   dependency.
+- `mini-project/sample.pdf` is generated seed data (see `make_sample_pdf.py`), not a real
+  campus document.
