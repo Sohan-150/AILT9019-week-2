@@ -1,0 +1,57 @@
+{
+  "_doc": "Evaluation fixtures for Bin-finder. Expected bins are written BY HAND, independently of rules.js, so that a bad edit to the rule table is actually caught rather than agreed with. Three groups: bins (correct answer required), refusals_hazardous (must refuse, no bin), refusals_unknown (must refuse, no bin), variants (robustness to casing/whitespace/punctuation).",
+
+  "bins": [
+    { "q": "newspaper",       "expect": "Paper",         "why": "clean dry paper" },
+    { "q": "cardboard box",   "expect": "Paper",         "why": "flattened corrugated" },
+    { "q": "office paper",    "expect": "Paper",         "why": "clean paper" },
+    { "q": "envelope",        "expect": "Paper",         "why": "paper envelope" },
+    { "q": "pizza box",       "expect": "General waste", "why": "TRAP: greasy, not recyclable" },
+    { "q": "paper towel",     "expect": "General waste", "why": "TRAP: soiled paper" },
+    { "q": "receipt",         "expect": "General waste", "why": "TRAP: thermal paper" },
+    { "q": "water bottle",    "expect": "Plastics",      "why": "rinsed PET" },
+    { "q": "shampoo bottle",  "expect": "Plastics",      "why": "rinsed HDPE" },
+    { "q": "yoghurt tub",     "expect": "Plastics",      "why": "rigid tub" },
+    { "q": "plastic bag",     "expect": "General waste", "why": "TRAP: soft film" },
+    { "q": "cling film",      "expect": "General waste", "why": "TRAP: soft film" },
+    { "q": "crisp packet",    "expect": "General waste", "why": "TRAP: metallised film" },
+    { "q": "aluminium can",   "expect": "Metals",        "why": "rinsed can" },
+    { "q": "tin can",         "expect": "Metals",        "why": "rinsed steel" },
+    { "q": "foil",            "expect": "Metals",        "why": "clean foil ball" },
+    { "q": "glass bottle",    "expect": "Glass",         "why": "container glass" },
+    { "q": "jam jar",         "expect": "Glass",         "why": "container glass" },
+    { "q": "wine glass",      "expect": "General waste", "why": "TRAP: not container glass" },
+    { "q": "mirror",          "expect": "General waste", "why": "TRAP: mirrored glass" },
+    { "q": "banana peel",     "expect": "Food waste",    "why": "fruit peelings" },
+    { "q": "coffee grounds",  "expect": "Food waste",    "why": "grounds + filter" },
+    { "q": "egg shell",       "expect": "Food waste",    "why": "food scraps" },
+    { "q": "tea bag",         "expect": "Food waste",    "why": "leaves + paper" },
+    { "q": "bones",           "expect": "General waste", "why": "TRAP: not food waste" },
+    { "q": "phone charger",   "expect": "E-waste",       "why": "small electronics" },
+    { "q": "laptop",          "expect": "E-waste",       "why": "electronics" },
+    { "q": "cigarette butt",  "expect": "General waste", "why": "not recyclable" },
+    { "q": "toothbrush",      "expect": "General waste", "why": "mixed material" },
+    { "q": "pen",             "expect": "General waste", "why": "mixed material" }
+  ],
+
+  "refusals_hazardous": [
+    { "q": "battery",      "why": "dedicated collection point" },
+    { "q": "paint",        "why": "hazardous-waste route" },
+    { "q": "light bulb",   "why": "do not break" },
+    { "q": "aerosol can",  "why": "pressurised" },
+    { "q": "medicine",     "why": "pharmacy take-back" }
+  ],
+
+  "refusals_unknown": [
+    { "q": "asbestos",       "why": "not in rules, must hand off" },
+    { "q": "wooden pallet",  "why": "not in rules" },
+    { "q": "ceramic mug",    "why": "not in rules" }
+  ],
+
+  "variants": [
+    { "q": "  BaNaNa   PeEl  ", "expect": "Food waste" },
+    { "q": "JAM JAR!",          "expect": "Glass" },
+    { "q": "pizza-box",         "expect": "General waste" },
+    { "q": "WATER BOTTLE",      "expect": "Plastics" }
+  ]
+}

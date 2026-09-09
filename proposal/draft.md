@@ -69,26 +69,45 @@ Week 3 work. Permission: source is public; the derived table is self-curated.
 
 ## 3. Evaluation and test
 
-Test style: **a fixed task set with expected bins, plus explicit refusal cases.**
+Test style: **a fixed task set with expected bins, plus explicit refusal cases. Already
+built and passing — see `prototype/EVALUATION.md`.**
 
-- **Task set (~40 items)** drawn from the rule table, covering every bin and every
-  contaminated-item trap (greasy cardboard, thermal receipts, drinking glass, soft film
-  plastic). Pass = correct bin **and** the correct cited rule.
-- **Refusal cases (must refuse, must not guess):**
-  1. An item absent from the rules (e.g. "asbestos") → "not in the published rules",
-     hand off to staff.
-  2. Any hazardous item (battery, paint, light bulb, aerosol, medicine) → hard refusal,
-     no override, even on an exact match.
-  3. A near-miss typo that should *not* silently fuzzy-match into a different bin.
-- **Robustness:** casing, whitespace, and punctuation variants must return the same bin.
+| # | Group | n | Gate |
+|---|---|---|---|
+| 1 | Task set — correct bin **and** a citable rule | 30 | ≥90% |
+| 2 | Hazardous refusals — must refuse, never assign a bin | 5 | 100% |
+| 3 | Unknown-item refusals — must return no match | 3 | 100% |
+| 4 | Input robustness — casing / whitespace / punctuation | 4 | 100% |
+| 5 | Every rule carries a `rule` and a `source` line | 41 | 100% |
 
-**"Good enough" means:** ≥90% correct on the task set, **100%** correct on refusal cases
-(a missed refusal is worse than a missed bin), and zero cases where the app states a bin
-without citing a rule.
+- The task set covers every bin plus every contamination trap (greasy cardboard, thermal
+  receipts, drinking glass, soft film plastic, bones).
+- **Refusal cases (must refuse, must not guess):** an item absent from the rules
+  (asbestos, ceramic mug); any hazardous item (battery, paint, light bulb, aerosol,
+  medicine) even on an exact match; and a near-miss that must not silently fuzzy-match
+  into a different bin.
+- Expected answers in `tasks.json` are **written by hand, independently of the rule
+  table**, so a bad edit to the rules is caught rather than agreed with.
 
-**Method is runnable this semester** — it is a table lookup and a browser page, so the
-whole evaluation is a script over the rule file. No model, no API cost, no human
-labelling at scale.
+**Current result: 100% on all five groups** (`prototype/eval-results.txt`).
+
+**"Good enough" means:** ≥90% on the task set, **100%** on refusal cases — a missed
+refusal is worse than a missed bin, because one battery in a general bin is an incident
+while one mis-binned box is not — and zero cases where the app states a bin without
+citing a rule.
+
+**We checked the test can fail.** A green test proves nothing until you have watched it go
+red, so we mutated the rule table twice: sending `pizza box` to *Paper* (the classic
+grease-contamination error), and removing the hazardous flag from `battery`. Both were
+caught and the run exited non-zero.
+
+**Method is runnable this semester** — `node evaluate.js`, no model, no API cost, no
+human labelling at scale.
+
+**Honest limitation:** this is 100% on **seed data we wrote ourselves**, so it proves the
+mechanism, not that the rules are right. It only becomes meaningful once the table is
+transcribed from the published guide; re-running the harness after transcription is how
+we will know the transcription is correct.
 
 ## 4. Distribution and accessibility
 
@@ -146,13 +165,28 @@ labelling at scale.
 
 | Week | Milestone |
 |---|---|
-| 2 (Sep 7–13) | Prototype running on seed data; pitch shortlisted; repo pushed |
+| 2 (Sep 7–13) | Prototype running on seed data; directions shortlisted; repo pushed |
 | 3 (Sep 14–20) | Transcribe real rule table; build the task set; run first evaluation |
 | 4 (Sep 21–27) | **Proposal draft due Fri 25 Sep**; evaluation results in; refusals hardened |
 | 5–6 | Real-user walkthrough with hall residents; fix what the task set missed |
 | 7+ | Should-have items only if must-haves are solid |
 
-A drawn timeline figure goes in the final draft.
+```
+                    W2   W3   W4   W5   W6   W7+
+                    ───  ───  ───  ───  ───  ───
+Prototype (seed)    ███
+Evaluation harness  ███  ███
+Transcribe rules         ███  ███
+Real evaluation               ███
+Proposal draft                ███▌◄─ Fri 25 Sep
+User walkthrough                   ███  ███
+Should-haves                                 ███
+                    ───  ───  ───  ───  ───  ───
+                    done done done
+```
+
+The critical path is the transcription: everything after Week 3 depends on real rules
+being in the table, and it is the one task we cannot shortcut by writing more code.
 
 ---
 

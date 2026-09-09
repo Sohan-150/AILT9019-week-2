@@ -10,7 +10,7 @@ ailt9019-week2/
 ├── part-c-mcp/         a tiny stdio MCP server (today / current_time / days_until)
 ├── part-d-pi/          Pi Agent install + .pi/skills/ port of the same skill
 ├── part-e-github/      git setup + push/clone runbook
-├── prototype/          Bin-finder — one page that answers one question
+├── prototype/          Bin-finder — one page that answers one question + its tests
 └── proposal/           2-3 direction shortlist + draft proposal (due Fri 25 Sep)
 ```
 
@@ -56,6 +56,9 @@ python part-c-mcp/test_client.py
 
 # PDF summarizer skill
 python part-b-skill/my-skill/scripts/extract_pdf.py <file.pdf> --out out.txt
+
+# Prototype evaluation — 42 checks, exits non-zero on failure
+node prototype/evaluate.js
 ```
 
 ## What each part concluded

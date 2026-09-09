@@ -1,0 +1,18 @@
+Bin-finder evaluation
+============================================================
+rule set: 41 rules | hazardous: 5
+data: SEED (self-curated placeholder)
+
+1. Task set (correct bin + citation)   30/30 (100%)
+2. Hazardous refusals                  5/5 (100%)
+3. Unknown-item refusals               3/3 (100%)
+4. Input robustness                    4/4 (100%)
+5. Every rule carries a source line    41/41
+
+Gates ("good enough")
+  PASS  task set >= 90%            100%
+  PASS  hazardous refusals 100%    pass
+  PASS  unknown refusals 100%      pass
+  PASS  every rule cited           pass
+
+RESULT: ALL GATES PASSED
