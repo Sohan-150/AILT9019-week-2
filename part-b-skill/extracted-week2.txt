@@ -1,0 +1,265 @@
+SOURCE: C:/Users/sohan/Downloads/Week_02_Build_Start.pdf
+PAGES: 6 (extracting 1-6)
+CHARS: 12557
+PAGES WITH (ALMOST) NO TEXT: 0
+----------------------------------------
+
+--- page 1 ---
+AILT9019 · Week 2 
+1 
+Week 2 · Build Start · T-II Agents, Skills & Context 
+Sep 7 – 13  ·  AILT9019 AI Literacy II · Student materials  
+This week's goal 
+Learn how an AI agent is put together (context, skills and MCP), then pick a project direction and 
+start building a small local prototype with your AI coding tool. Everything runs on your own 
+computer. 
+By the end of Week 2, you can… How you prove it 
+Explain what context, skills and MCP tools are You can label Figure 1 without looking 
+Write a working SKILL.md and have the tool use it Part B acceptance 
+Run an agent that calls an MCP tool Parts C–D acceptance 
+Shortlist 2–3 project directions Your notes against the topic idea list 
+Push a first prototype to GitHub Your repository has a commit from this week 
+What to do this week 
+# Task Where Time 
+1 Finish the T-II tutorial: context engineering, skills, 
+MCP, Pi Agent 
+Tutorial 02 slides + lab notes 
+below 
+~90 
+min 
+2 Read the proposal section requirements and the sample 
+proposals 
+Proposal template file + this 
+document 
+~40 
+min 
+3 Browse the topic idea list; shortlist 2–3 directions This document ~30 
+min 
+4 Build a tiny local prototype in your direction Your computer ~2 h 
+5 Push your first version to GitHub Your computer ~15 
+min 
+No deadline this week, but the proposal draft is due Fri Sep 25 (Week 4). The shortlisting you do 
+now is what makes that deadline survivable. And build one small thing that runs locally this week, 
+for example a single page that answers one question about y our chosen data: a small working 
+prototype beats a big broken plan. 
+T-II Lab Notes · Agents, Skills, Context & MCP 
+Follow along during the tutorial. Everything runs on your own computer. If a step does not work, 
+stop and ask on Ed or in office hours; do not move on with a broken setup. 
+The mental model
+
+--- page 2 ---
+AILT9019 · Week 2 
+2 
+ 
+Figure 1, anatomy of an AI agent. Context is what the LLM reads; skills are reusable instructions you write; MCP tools 
+are external calls it may make. 
+Why this matters: a plain chat and an agent differ only in the right half of this figure. Same LLM, 
+but the agent is given your instructions as context, your skills to follow, and tools to call. That is 
+what you are assembling this week. 
+Part A · Context engineering (15 min) 
+1. Open your AI coding tool (CodeBuddy or TRAE) in an empty folder. 
+2. Write a one-line session instruction at the top of the chat. Example: 
+You are helping me build a small Python tool. 
+Keep answers short and show commands I can run. 
+3. Ask one small task (e.g. “write a function that counts words in a file”). Then change only 
+the instruction, e.g. add “always include a usage example”, and repeat the same task. 
+4. Acceptance: you can explain in one sentence why the clearer instruction changed the result. 
+Part B · Your first skill (15 min) 
+1. Create a folder named my-skill with a file SKILL.md inside. 
+2. In SKILL.md, write what the skill is for, when to use it, and one concrete step. A complete 
+working example: 
+# Meeting-notes cleaner 
+Purpose: turn rough meeting notes into a short action list. 
+Use when: the user pastes text marked [MEETING NOTES]. 
+Steps: (1) list every action item as `owner, task, due date`, 
+(2) list open questions separately, (3) change nothing else. 
+3. Tell the AI tool to use your skill for a task (paste a short fake meeting note marked 
+[MEETING NOTES] and ask it to clean it). 
+4. Acceptance: the output follows the exact format your SKILL.md specifies, action lines look 
+like “owner, task, due date”. 
+Part C · A tiny MCP tool (20 min)
+
+--- page 3 ---
+AILT9019 · Week 2 
+3 
+1. Follow the tutorial demo to register a small MCP server, a tool that returns a value, such as 
+today's date or a weather line. 
+2. Ask the agent to call that tool and report the result. A request that forces a tool call looks 
+like: 
+What date is it today? Use the date tool, do not guess. 
+3. Acceptance: the agent shows you real output from the tool, and you can name which part of 
+the answer came from the tool rather than the model. 
+Part D · Run Pi Agent (25 min) 
+1. Install Pi Agent (see the tutorial slides): 
+npm install -g @earendil-works/pi-coding-agent 
+2. Configure a model provider and start pi in a practice folder. 
+3. Ask it to create a small script, run the script, and explain what it changed. 
+4. Copy your skill from Part B into .pi/skills/ and repeat Part B inside Pi Agent. 
+5. Acceptance: Pi Agent runs on your machine and uses your skill in a session. 
+Part E · Push to GitHub (10 min) 
+1. Push the practice folder (or a small project you started) to a GitHub repository you created 
+this week. 
+2. Acceptance: a fresh clone of your repository contains the files you built, test it: clone into a 
+second folder and check the files are there. 
+Lab checkpoints at a glance 
+Part You are done when… 
+A Context You can predict how an instruction change will change the answer 
+B Skills The tool reproduces your SKILL.md format unprompted 
+C MCP You can point at output that came from a tool, not the model 
+D Pi Agent Pi runs locally and follows your skill 
+E GitHub A fresh clone contains everything you built 
+Project proposal (due Fri Sep 25, Week 4) 
+One submission per team, via the Moodle form. Download the Project Proposal Template 
+(AILT9019_Project_Proposal_Template.docx), fill it in, and submit by Friday, 25 Sep (Week 4). Do 
+not put group names, member names, UIDs, emails, or other personal informa tion in the proposal 
+content. Write so another team can understand the idea without a live demo. Follow the template 
+section titles. Detailed requirements are in the table below; sample proposals and the idea list follow 
+after that.
+
+--- page 4 ---
+AILT9019 · Week 2 
+4 
+This week: read the proposal requirements, the sample proposals, and the topic idea list; 
+shortlist 2–3 directions; then start filling the template. Figures (pipeline, timeline) are welcome. 
+Proposal requirements 
+A brief example is provided in the proposal template (blue text, topic idea #3 Budget -policy Q&A 
+only). Proposal writing must follow the section titles in that template. The table below states what 
+each section should contain. Sample proposals, the idea list, and further advice are in the parts after 
+this table. 
+Section Requirement 
+1. Background One primary user group, the concrete task, the current pain, and why the 
+project is worth building this semester (motivation). Name a target — who it is 
+for, and who or what it is not for. State where the idea comes from: which 
+topic-list idea(s) and how far they were adapted, an external idea, or an 
+original idea. A context figure is optional. 
+2. Project pipeline A clear end-to-end path: how a request becomes a useful result (problem 
+formulation + method). Say what the team will actually build. A pipeline 
+diagram is encouraged. Data or tools belong here if they are part of the 
+method (no separate Data section). 
+3. Evaluation and test How the team will tell whether the project works. Choose a test style that fits 
+the product (task set, walkthrough, comparison, refusal cases, etc.) and state 
+what “good enough” means. Include at least one case the system should fail 
+safely or refuse. Do not invent a method that cannot be run this semester. 
+4. Distribution and 
+accessibility 
+How someone else can open and use the app, as they apply: (1) getting a 
+model / AI API running without a painful setup; (2) whether a person with 
+little or no coding background can complete a first successful use from the 
+README or UI; (3) whether the work can sit in more than one agent 
+environment (skill file, MCP tool, or another coding agent) if that is in scope. 
+This is access and hand-off, not a full reproducibility recipe. 
+5. Ethics and risks An explicit “does not” — what the product will refuse to do or claim — plus 
+main misuse or failure risks and how they are mitigated (disclaimers, human 
+hand-off, data limits). Peer reviewers should be able to quote the “does not” 
+in one or two lines. 
+6. Checkpoints Two parts. (A) Acceptance items: must-have (the demo fails without these) 
+and should-have (only if time allows). (B) A timeline to the Week 4 draft and a 
+little beyond. A timeline figure is encouraged. Keep must-have small enough 
+to finish. 
+Sample proposals (what “good” looks like)
+
+--- page 5 ---
+AILT9019 · Week 2 
+5 
+Sample User & task Explicit “does not” Evaluation 
+Campus 
+Accessibility 
+Navigator 
+A student finds accessible 
+routes/facilities from a curated 
+campus dataset; multilingual 
+queries; evidence links 
+No emergency 
+routing 
+10 route/facility 
+questions with source 
+verification 
+Course Policy 
+Explainer 
+Plain-language answers over a 
+fixed set of public course policies, 
+with paragraph citations 
+No personal-case 
+interpretation, no 
+appeal decisions 
+Answer correctness, 
+citation match, refusal 
+on missing policy 
+Sustainable 
+Dining Helper 
+Compares user-selected dining 
+options from published 
+menu/ingredient data 
+No allergy inference, 
+no medical nutrition 
+advice 
+Extraction accuracy, 
+transparent assumptions, 
+unavailable-data 
+behaviour 
+What makes them good: a named user group and a small concrete task; data that is public and 
+licensable; a clear “does not” boundary that keeps risk low; and evaluation tasks that would actually 
+show whether it works. 
+Topic idea list 
+Starting points, not a menu. Pick one, adapt one, or propose something else. For each idea you 
+shortlist, write one sentence naming the user group and single task, and one line naming the dataset 
+(source + permission). The numbered examples below each give  a suggested user group, task, and 
+an explicit “does not” (what the project will refuse to do). Difficulty bands are Easy / Medium / 
+Challenging — about build and evaluation difficulty this semester, not how unusual the topic is. 
+Bands are guidance only, not a required track. 
+ 
+# Idea (difficulty) User group, task, and explicit “does not” 
+1 Easy · Loan term explainer First-year students who cannot tell what a loan term means 
+when reading a public student-loan FAQ. Does not: give 
+personal borrowing advice, recommend lenders, or decide 
+whether someone should take a loan. 
+2 Easy · Recycling rules 
+helper 
+Hall residents who need to know which bin an item goes in 
+under published campus recycling rules. Does not: handle 
+hazardous-waste disposal, override building staff instructions, 
+or invent rules not in the published source. 
+3 Medium · Budget-policy 
+Q&A 
+Student society officers looking up a spending rule in a fixed 
+set of public budget/policy PDFs. Does not: approve 
+reimbursements, interpret edge-case personal claims, or 
+replace the society treasurer’s decision. 
+4 Medium · Clinic information 
+navigator 
+Students finding opening hours or booking basics from the 
+official clinic/service web pages. Does not: give medical 
+diagnosis, triage urgency, or book appointments on the user’s
+
+--- page 6 ---
+AILT9019 · Week 2 
+6 
+behalf. 
+5 Challenging · Lesson-plan 
+scaffolder 
+Tutors who need a first-draft lesson outline from a short topic 
+brief (no live student data). Does not: assess real students, 
+store class rosters, or claim the draft is an accredited 
+curriculum. 
+6 Challenging · Essay 
+feedback coach 
+Writers who want structured feedback on synthetic practice 
+essays only (no real coursework). Does not: grade official 
+assignments, check plagiarism for submission, or accept real 
+student coursework as input. 
+How to choose (do this before Week 3) 
+1. Pick 2–3 ideas that feel interesting, then write one sentence per idea naming the single user 
+group and single task. 
+2. For each, name the dataset in one line, source plus permission to use (public, licensed, or 
+self-curated). If you cannot name it, the idea is not ready. 
+3. Match the Easy / Medium / Challenging band to your team’s experience; a finished Easy 
+project beats an unfinished Challenging one. 
+4. Avoid the crowd: a third of the cohort building the same project helps nobody. 
+Proposal Quick self-check 
+☐  One user group + one task can be named in a single sentence. 
+☐  Dataset source and permission can be named in one line. 
+☐  The core workflow is small enough to run end to end this semester. 
+☐  At least one clear “does not” (out-of-scope) boundary is written. 
+☐  Background states the idea source: which topic-list idea(s) and how far they were adapted, an 
+external idea, or an original idea. The proposal content does not include group names or personal 
+information (names, UIDs, emails).

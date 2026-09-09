@@ -1,0 +1,111 @@
+SOURCE: C:/Users/sohan/Downloads/Week_02_Build_Start.pdf
+PAGES: 6 (extracting 5-6)
+CHARS: 4208
+PAGES WITH (ALMOST) NO TEXT: 0
+----------------------------------------
+
+--- page 5 ---
+AILT9019 · Week 2 
+5 
+Sample User & task Explicit “does not” Evaluation 
+Campus 
+Accessibility 
+Navigator 
+A student finds accessible 
+routes/facilities from a curated 
+campus dataset; multilingual 
+queries; evidence links 
+No emergency 
+routing 
+10 route/facility 
+questions with source 
+verification 
+Course Policy 
+Explainer 
+Plain-language answers over a 
+fixed set of public course policies, 
+with paragraph citations 
+No personal-case 
+interpretation, no 
+appeal decisions 
+Answer correctness, 
+citation match, refusal 
+on missing policy 
+Sustainable 
+Dining Helper 
+Compares user-selected dining 
+options from published 
+menu/ingredient data 
+No allergy inference, 
+no medical nutrition 
+advice 
+Extraction accuracy, 
+transparent assumptions, 
+unavailable-data 
+behaviour 
+What makes them good: a named user group and a small concrete task; data that is public and 
+licensable; a clear “does not” boundary that keeps risk low; and evaluation tasks that would actually 
+show whether it works. 
+Topic idea list 
+Starting points, not a menu. Pick one, adapt one, or propose something else. For each idea you 
+shortlist, write one sentence naming the user group and single task, and one line naming the dataset 
+(source + permission). The numbered examples below each give  a suggested user group, task, and 
+an explicit “does not” (what the project will refuse to do). Difficulty bands are Easy / Medium / 
+Challenging — about build and evaluation difficulty this semester, not how unusual the topic is. 
+Bands are guidance only, not a required track. 
+ 
+# Idea (difficulty) User group, task, and explicit “does not” 
+1 Easy · Loan term explainer First-year students who cannot tell what a loan term means 
+when reading a public student-loan FAQ. Does not: give 
+personal borrowing advice, recommend lenders, or decide 
+whether someone should take a loan. 
+2 Easy · Recycling rules 
+helper 
+Hall residents who need to know which bin an item goes in 
+under published campus recycling rules. Does not: handle 
+hazardous-waste disposal, override building staff instructions, 
+or invent rules not in the published source. 
+3 Medium · Budget-policy 
+Q&A 
+Student society officers looking up a spending rule in a fixed 
+set of public budget/policy PDFs. Does not: approve 
+reimbursements, interpret edge-case personal claims, or 
+replace the society treasurer’s decision. 
+4 Medium · Clinic information 
+navigator 
+Students finding opening hours or booking basics from the 
+official clinic/service web pages. Does not: give medical 
+diagnosis, triage urgency, or book appointments on the user’s
+
+--- page 6 ---
+AILT9019 · Week 2 
+6 
+behalf. 
+5 Challenging · Lesson-plan 
+scaffolder 
+Tutors who need a first-draft lesson outline from a short topic 
+brief (no live student data). Does not: assess real students, 
+store class rosters, or claim the draft is an accredited 
+curriculum. 
+6 Challenging · Essay 
+feedback coach 
+Writers who want structured feedback on synthetic practice 
+essays only (no real coursework). Does not: grade official 
+assignments, check plagiarism for submission, or accept real 
+student coursework as input. 
+How to choose (do this before Week 3) 
+1. Pick 2–3 ideas that feel interesting, then write one sentence per idea naming the single user 
+group and single task. 
+2. For each, name the dataset in one line, source plus permission to use (public, licensed, or 
+self-curated). If you cannot name it, the idea is not ready. 
+3. Match the Easy / Medium / Challenging band to your team’s experience; a finished Easy 
+project beats an unfinished Challenging one. 
+4. Avoid the crowd: a third of the cohort building the same project helps nobody. 
+Proposal Quick self-check 
+☐  One user group + one task can be named in a single sentence. 
+☐  Dataset source and permission can be named in one line. 
+☐  The core workflow is small enough to run end to end this semester. 
+☐  At least one clear “does not” (out-of-scope) boundary is written. 
+☐  Background states the idea source: which topic-list idea(s) and how far they were adapted, an 
+external idea, or an original idea. The proposal content does not include group names or personal 
+information (names, UIDs, emails).

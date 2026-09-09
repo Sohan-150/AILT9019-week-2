@@ -1,0 +1,8 @@
+1) initialize -> {"name": "week2-tiny-tools", "version": "0.1.0"} | protocol 2024-11-05
+2) tools/list -> today, current_time, days_until
+3) tools/call today -> 2026-09-09 (Wednesday), ISO year 2026 week 37
+3) tools/call current_time -> 2026-09-09T21:51:36+08:00 (UTC+0800)
+3) tools/call days_until{'date': '2026-09-25'} -> 16 day(s) until 2026-09-25 (today is 2026-09-09).
+4) unknown tool -> {"code": -32601, "message": "Unknown tool: nope"}
+
+ALL CHECKS PASSED
