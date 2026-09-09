@@ -9,6 +9,7 @@ ailt9019-week2/
 ├── part-b-skill/       the pdf-summarizer skill + proof it was used
 ├── part-c-mcp/         a tiny stdio MCP server (today / current_time / days_until)
 ├── part-d-pi/          Pi Agent install + .pi/skills/ port of the same skill
+├── part-e-github/      git setup + push/clone runbook
 ├── prototype/          Bin-finder — one page that answers one question
 └── proposal/           2-3 direction shortlist + draft proposal (due Fri 25 Sep)
 ```
@@ -22,6 +23,26 @@ ailt9019-week2/
 | C · MCP | You can point at output that came from a tool, not the model | **done** — `part-c-mcp/tool-output.txt` |
 | D · Pi Agent | Pi runs locally and follows your skill | **partly** — installed (v0.85.1) + skill copied to `.pi/skills/`; needs an API key for the session |
 | E · GitHub | A fresh clone contains everything you built | **pending** — needs GitHub auth |
+
+## Two things need you (about 7 minutes total)
+
+Both are interactive and use *your* credentials, so I stopped rather than guess.
+
+**1 · GitHub (Part E).** `gh` v2.100.0 is installed:
+```bash
+GH="C:/Users/sohan/.workbuddy-ai/binaries/gh/bin/gh.exe"
+cd "C:/Users/sohan/WorkBuddy AI/2026-09-09-21-42-04/ailt9019-week2"
+"$GH" auth login
+"$GH" repo create ailt9019-week2 --private --source=. --remote=origin --push
+```
+Then clone into a second folder to prove a fresh clone has everything.
+
+**2 · Pi Agent provider (Part D).** Every provider reports `not_ready`. Set one key:
+```bash
+export GEMINI_API_KEY=...      # or ANTHROPIC_API_KEY / OPENAI_API_KEY
+cd part-d-pi/practice && pi --approve
+```
+Then `/skill:pdf-summarizer` to run the Part B skill inside Pi.
 
 ## Quick start
 
@@ -49,7 +70,7 @@ python part-b-skill/my-skill/scripts/extract_pdf.py <file.pdf> --out out.txt
   machine's clock. The model supplied only the words around it.
 - **D** — The same `SKILL.md` worked in Pi with zero edits, which is the actual lesson:
   a skill is a file, not a feature of one tool.
-- **E** — pending GitHub auth.
+- **E** — repo committed locally; push + fresh-clone verification pending GitHub login.
 
 ## Notes
 
